@@ -33,7 +33,7 @@ This repository contains code for training a convolutional neural network (CNN) 
 1. **Clone the repository:**
 
     ```bash
-   git clone https://github.com/prasadsheetal/EfficientCIFARNet.git
+   git clone https://github.com/therealnaveenkamal/EfficientCIFARNet.git
     cd EfficientCIFARNet
     ```
 
