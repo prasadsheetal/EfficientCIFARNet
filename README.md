@@ -74,7 +74,7 @@ A parameter limit of 5,000,000 trainable parameters is enforced to ensure the mo
 
 ## Loss Plots
 
-Below are sample images of the training and test loss curves (if available):
+Below are sample images of the training and test loss curves:
 
 ![Training Loss Plot](train_loss.png)  
 ![Test Loss Plot](test_loss.png)
