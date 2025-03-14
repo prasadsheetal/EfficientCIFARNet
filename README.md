@@ -110,8 +110,3 @@ Save the file and commit it to your Git repository. This README provides an over
 
 
 
-
-
-Search
-
-ChatGPT can make mistakes. Check important info.
