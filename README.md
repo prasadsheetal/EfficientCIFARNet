@@ -33,8 +33,8 @@ This repository contains code for training a convolutional neural network (CNN) 
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/YourUsername/your-repo-name.git
-    cd your-repo-name
+   git clone https://github.com/prasadsheetal/EfficientCIFARNet.git
+    cd EfficientCIFARNet
     ```
 
 2. **Install dependencies manually** (e.g., via pip):
