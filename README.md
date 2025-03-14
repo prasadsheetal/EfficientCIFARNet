@@ -3,16 +3,16 @@
 This repository contains code for training a convolutional neural network (CNN) on the CIFAR-10 dataset using advanced data augmentation techniques, mixed precision training, and a OneCycleLR scheduler. The model architecture is inspired by EfficientNet-style blocks and includes custom residual and squeeze-and-excitation layers.
 
 ## Repository Structure
-.
-├── README.md
-├── dl-project-final-report.tex
-├── train.py
-├── predict.py
-├── model.py
-├── data_loader.py
-├── best_model_retrain.pth
-├── submission_one_last_time_123.csv
-└── requirements.txt
+
+- README.md  
+- dl-project-final-report.tex  
+- train.py  
+- predict.py  
+- model.py  
+- data_loader.py  
+- best_model_retrain.pth  
+- submission_one_last_time_123.csv  
+- requirements.txt
 
 Copy
 
