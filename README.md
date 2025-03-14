@@ -14,8 +14,6 @@ This repository contains code for training a convolutional neural network (CNN) 
 - submission_one_last_time_123.csv  
 - requirements.txt
 
-Copy
-
 ## Requirements
 - Python 3.7+
 - PyTorch 1.7+
@@ -27,74 +25,80 @@ Copy
 - tqdm
 - (Optional) torchsummary
 
-Install dependencies:
+## Installation
+
 ```bash
 pip install -r requirements.txt
-Installation
-bash
-Copy
+```
+## Usage
+
+### Installation
+
+```bash
 git clone https://github.com/yourusername/your-repo-name.git
 cd your-repo-name
 pip install -r requirements.txt
-Usage
-Training
-bash
-Copy
+```
+
+## Training
+
+```bash
 python train.py
-Implements OneCycleLR scheduling
+```
+This script performs the following:
 
-Uses mixed precision training
+- Loads and preprocesses CIFAR-10 data using a custom `CIFAR` class.
+- Builds the EfficientNet-style model.
+- Trains the model for a specified number of epochs (e.g., 150 or 300) using OneCycleLR scheduling.
+- Saves the best performing model weights to `best_model_retrain.pth`.
 
-Saves best weights to best_model_retrain.pth
+## Prediction
 
-Prediction
-bash
-Copy
+```bash
 python predict.py
-Generates submission_one_last_time_123.csv
+```
+This script:
 
-Requires test data in pickle format
+- Loads the test data from a pickle file.
+- Preprocesses the data using the `UnseenDataset` class.
+- Uses the trained model to predict labels for the test set.
+- Saves the predictions in a CSV file named `submission_one_last_time_123.csv`.
 
-Model Architecture
-EfficientNet-style components:
+## Model Architecture
 
-Stem: Conv + Squeeze-Excitation
+The model is based on an EfficientNet-style architecture with the following components:
 
-MBConv blocks with depthwise convolutions
+- **Stem:** Initial convolution and squeeze-excitation block.
+- **Block Stack:** A series of MBConv blocks with residual connections and depthwise convolutions.
+- **Head:** A fully connected layer with dropout, followed by a softmax output.
 
-Head: FC layer with dropout
+A TikZ diagram of the architecture is provided in the LaTeX report (`dl-project-final-report.tex`).
 
-Diagram available in dl-project-final-report.tex
+## Evaluation
 
-Performance
-Metric	Value
-Training Acc	~98%
-Validation Acc	~93%
-Test Acc	~92.7%
-Code Structure
-model.py: EfficientNet implementation
+The training process monitors both training and validation loss/accuracy. Key metrics include:
+- **Training Accuracy:** ~98%
+- **Validation Accuracy:** ~93%
+- **Test Accuracy:** ~92.7%
 
-data_loader.py: Custom transforms/augmentations
+A parameter limit of 5,000,000 trainable parameters is enforced, ensuring the model remains efficient.
 
-train.py: Training pipeline with metrics tracking
+## Code Overview
 
-predict.py: Inference pipeline for test data
+- **Model Initialization:**  
+  The model is instantiated, initialized with Kaiming Normal, and loaded with pretrained weights if available.
 
-Contributing
-Contributions welcome! Open issues/PRs for:
+- **Training Loop:**  
+  The training loop uses PyTorch Ignite for supervised training, mixed precision for efficiency, and a OneCycleLR scheduler for learning rate adjustment.
 
-Model architecture improvements
+- **Prediction Pipeline:**  
+  The prediction script loads test data, preprocesses it, runs inference with the trained model, and writes the output to a CSV file.
 
-Enhanced data augmentations
+## Contact
 
-Training optimization
+For any questions or suggestions, please contact:
 
-License
-MIT License
+- **Sheetal Prasad** (sp7990@nyu.edu)
+- **Naveenraj Kamalakannan** (nk3940@nyu.edu)
+- **Harish Balaji** (hb2917@nyu.edu)
 
-Contact
-Sheetal Prasad (sp7990@nyu.edu)
-
-Naveenraj Kamalakannan (nk3940@nyu.edu)
-
-Harish Balaji (hb2917@nyu.edu)
