@@ -79,8 +79,6 @@ Below are sample images of the training and test loss curves (if available):
 ![Training Loss Plot](train_loss.png)  
 ![Test Loss Plot](test_loss.png)
 
-*Ensure these image files are placed in the repository if you wish to display the plots.*
-
 ## Code Overview
 
 - **Model Initialization:**  
