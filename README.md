@@ -11,10 +11,11 @@ This repository contains code for training a convolutional neural network (CNN) 
 - model.py  
 - data_loader.py  
 - best_model_retrain.pth  
-- submission_one_last_time_123.csv  
-- requirements.txt
+- submission.csv  
+- (Optional) Loss plot images (e.g., `train_loss.png`, `test_loss.png`)
 
 ## Requirements
+
 - Python 3.7+
 - PyTorch 1.7+
 - TorchVision
@@ -23,46 +24,34 @@ This repository contains code for training a convolutional neural network (CNN) 
 - Pandas
 - Matplotlib
 - tqdm
-- (Optional) torchsummary
+- (Optional) torchsummary for model summary
+
+*Please install the necessary packages using your preferred method (e.g., pip or conda).*
 
 ## Installation
 
-```bash
-pip install -r requirements.txt
-```
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/YourUsername/your-repo-name.git
+    cd your-repo-name
+    ```
+
+2. **Install dependencies manually** (e.g., via pip):
+
+    ```bash
+    pip install torch torchvision ignite numpy pandas matplotlib tqdm
+    ```
+
 ## Usage
 
-### Installation
+### Training
 
-```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
-pip install -r requirements.txt
-```
+The repository includes a training script that loads and preprocesses CIFAR-10 data using a custom `CIFAR` class, builds the EfficientNet-style model, and trains it for a specified number of epochs using OneCycleLR scheduling with mixed precision. The best performing model weights are saved to `best_model_retrain.pth`.
 
-## Training
+### Prediction
 
-```bash
-python train.py
-```
-This script performs the following:
-
-- Loads and preprocesses CIFAR-10 data using a custom `CIFAR` class.
-- Builds the EfficientNet-style model.
-- Trains the model for a specified number of epochs (e.g., 150 or 300) using OneCycleLR scheduling.
-- Saves the best performing model weights to `best_model_retrain.pth`.
-
-## Prediction
-
-```bash
-python predict.py
-```
-This script:
-
-- Loads the test data from a pickle file.
-- Preprocesses the data using the `UnseenDataset` class.
-- Uses the trained model to predict labels for the test set.
-- Saves the predictions in a CSV file named `submission_one_last_time_123.csv`.
+After training, the prediction script loads test data from a pickle file, preprocesses it with the `UnseenDataset` class, and uses the trained model to predict labels for the test set. The predictions are then saved to a CSV file named `submission.csv`.
 
 ## Model Architecture
 
@@ -76,12 +65,21 @@ A TikZ diagram of the architecture is provided in the LaTeX report (`dl-project-
 
 ## Evaluation
 
-The training process monitors both training and validation loss/accuracy. Key metrics include:
+During training, both training and validation loss/accuracy are monitored. Key metrics include:
 - **Training Accuracy:** ~98%
 - **Validation Accuracy:** ~93%
 - **Test Accuracy:** ~92.7%
 
-A parameter limit of 5,000,000 trainable parameters is enforced, ensuring the model remains efficient.
+A parameter limit of 5,000,000 trainable parameters is enforced to ensure the model remains efficient.
+
+## Loss Plots
+
+Below are sample images of the training and test loss curves (if available):
+
+![Training Loss Plot](train_loss.png)  
+![Test Loss Plot](test_loss.png)
+
+*Ensure these image files are placed in the repository if you wish to display the plots.*
 
 ## Code Overview
 
@@ -92,13 +90,19 @@ A parameter limit of 5,000,000 trainable parameters is enforced, ensuring the mo
   The training loop uses PyTorch Ignite for supervised training, mixed precision for efficiency, and a OneCycleLR scheduler for learning rate adjustment.
 
 - **Prediction Pipeline:**  
-  The prediction script loads test data, preprocesses it, runs inference with the trained model, and writes the output to a CSV file.
+  The prediction script loads test data, preprocesses it, runs inference with the trained model, and writes the output to a CSV file (`submission.csv`).
+
+## Contributing
+
+Contributions to enhance the model, improve data preprocessing, or refine training techniques are welcome. Please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
 For any questions or suggestions, please contact:
-
 - **Sheetal Prasad** (sp7990@nyu.edu)
 - **Naveenraj Kamalakannan** (nk3940@nyu.edu)
 - **Harish Balaji** (hb2917@nyu.edu)
-
